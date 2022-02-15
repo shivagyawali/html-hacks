@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        fieldset {
+            margin-bottom: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container m-5">
+        <h1>AutoFill Form</h1>
+        <form>
+
+            <fieldset>
+                <legend><b>Primary Address</b>
+                </legend>
+                <label for="primaryaddress">
+                    Address:</label>
+                <input type="text" name="Address" id="primaryaddress" required /><br />
+                <label for="primaryzip">Zip code:</label>
+                <input type="text" name="Zip code" id="primaryzip" pattern="[0-9]{6}" required /><br />
+            </fieldset>
+
+            <input type="checkbox" id="same" name="same" onchange="addressFunction()" />
+            <label for="same">
+                If same secondary address select this box.
+            </label>
+
+
+            <fieldset>
+                <legend><b>Secondary Address</b></legend>
+                <label for="secondaryaddress">
+                    Address:
+                </label>
+                <input type="text" name="Address" id="secondaryaddress" required /><br />
+                <label for="secondaryzip">
+                    Zip code:</label>
+                <input type="text" name="Zip code" id="secondaryzip" pattern="[0-9]{6}" required /><br />
+            </fieldset>
+
+
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+
+    <script>
+        function addressFunction() {
+            if (document.getElementById(
+                "same").checked) {
+                document.getElementById(
+                    "secondaryaddress").value =
+                    document.getElementById(
+                        "primaryaddress").value;
+
+                document.getElementById(
+                    "secondaryzip").value =
+                    document.getElementById(
+                        "primaryzip").value;
+            } else {
+                document.getElementById(
+                    "secondaryaddress").value = "";
+                document.getElementById(
+                    "secondaryzip").value = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
